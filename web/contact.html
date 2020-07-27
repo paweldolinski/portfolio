@@ -1,0 +1,128 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js?render=6LcYuYwUAAAAAPSDCA0P1hwokowtqRjBRuvvymsI'></script>
+
+    <title>Pawel Dolinski | Home</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="nav__logo">
+            <a href="index.html">
+                <img src="img/logobiale.svg">
+            </a>
+        </div>
+        <ul class="nav__list">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="portfolio.html">WORK</a></li>
+            <li><a href="contact.html">CONTACT</a>
+        </ul>
+    </nav>
+    <section class="contactHeader">
+        <div class="container">
+            <div class="contactHeader__caption">
+                <h4 class="italic">Reach out and send me message</h4>
+                <h1>LET'S HAVE A CHAT</h1>
+            </div>
+            <div class="scrollMouseIcon">
+                <div class="scrollMouseIcon__wrapper">
+                    <div class="scrollMouseIcon__scroller"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact">
+        <div class="container">
+            <div class="contact__form">
+                <div class="contact__line">
+                    <p>Contact detiles</p>
+                </div>
+                <form method="post" name="contact_form" action="contactForm.php">
+                    <div class="contact__wrapper">
+                        <p>Name</p>
+                        <div class="contact__inputs">
+                            <div class="contact__name">
+                                <input type="text" name="name" required>
+                                <p>First Name</p>
+                            </div>
+                            <div class="contact__name">
+                                <input type="text" name="lastName">
+                                <p>Last Name</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact__email">
+                        <p>Email Adress</p>
+                        <input type="text" name="email">
+                        <p>Message</p>
+                        <textarea name="message"></textarea>
+                    </div>
+                    <div class="contact__btn">
+                        <button type="submit">Send</button>
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LcYuYwUAAAAAPSDCA0P1hwokowtqRjBRuvvymsI"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <h2>Transform ideas into engaging digital experiences.</h2>
+                    <a href="contact.html">
+                        <button>GET IN TOUCH</button>
+                    </a>
+                    <p>Pawel Dolinski. All rights reserved. Terms of service. </p>
+                    <div class="footer__media">
+                        <div class="footer__icon">
+                            <a href="mailto: pawel.dolinski87@gmail.com">
+                                <img src="img/svg/002-closed-envelope-circle.svg">
+                            </a>
+                        </div>
+                        <div class="footer__icon">
+                            <a href="https://github.com/ocebeki" target="_blank">
+                                <img src="img/svg/001-github-logo.svg">
+                            </a>
+                        </div>
+                        <div class="footer__icon">
+                            <a href="tel:00487907964567">
+                                <img src="img/svg/003-phone-symbol-of-an-auricular-inside-a-circle.svg">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <?php
+
+        $email;$comment;$captcha;
+        if(isset($_POST['email'])){
+          $email=$_POST['email'];
+        }if(isset($_POST['comment'])){
+          $email=$_POST['comment'];
+        }if(isset($_POST['g-recaptcha-response'])){
+          $captcha=$_POST['g-recaptcha-response'];
+        }        $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcYuYwUAAAAAL6jNNaW6qxc4Gerx3pzSEcMXVb9&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+        
+?>
+
+
+    <script src="script/index.js"></script>
+    <script src="script/contact.js"></script>
+
+</body>
+
+</html>
